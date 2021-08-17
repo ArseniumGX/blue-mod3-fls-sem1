@@ -1,0 +1,16 @@
+{
+  "name": "sem1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "José Pereira Macedo <arseniumgx@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
