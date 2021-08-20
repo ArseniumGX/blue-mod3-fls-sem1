@@ -55,6 +55,13 @@ class FilmeController{
         return res.status(202).json({message: "Filme deletado!", filmes: buffer.filmes})
     }
 
+    doDia = (req, res) => {
+        const buffer = load()
+        return res.status(200).json({
+            message: "Filme do dia", 
+            filme: buffer.filmes[Math.floor(Math.random() * (buffer.filmes.length - 0)) + 0]})
+    }
+
 }
 
 

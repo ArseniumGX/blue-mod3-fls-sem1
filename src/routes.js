@@ -1,4 +1,5 @@
 const filmeController = require('./controllers/filmesController')
+const gameController = require('./controllers/gamesController')
 
 const route = require('express').Router()
 
@@ -15,16 +16,17 @@ route.get('/', (req, res) => {
 })
 
 route.get('/filmes', filmeController.read)
+route.get('/filmes/dodia', filmeController.doDia)
 route.get('/filmes/:id', filmeController.readOne)
 route.post('/filmes', filmeController.create)
 route.put('/filmes/:id', filmeController.update)
 route.delete('/filmes/:id', filmeController.delete)
 
-route.get('/games', filmeController.read)
-route.get('/games/:id', filmeController.readOne)
-route.post('/games', filmeController.create)
-route.put('/games/:id', filmeController.update)
-route.delete('/games/:id', filmeController.delete)
+route.get('/games', gameController.read)
+route.get('/games/:id', gameController.readOne)
+route.post('/games', gameController.create)
+route.put('/games/:id', gameController.update)
+route.delete('/games/:id', gameController.delete)
 
 route.get('/:slug', (req, res) => {
     return res.send(`<p>Página /${req.params.slug} não encontrada`)
