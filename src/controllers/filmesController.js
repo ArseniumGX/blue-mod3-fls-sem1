@@ -1,48 +1,61 @@
-const { filmes } = require('../database/database.json')
+const { save, load } = require('../database/methods')
 
 class FilmeController{
     read = (req, res) => {
-        return res.json(filmes)
+        const { filmes } = load()
+        return res.status(200).json({filmes})
     }
 
     readOne = (req, res) => {
         const { id } = req.params
+        const { filmes } = load()
 
         if(filmes[id] === undefined)
-            return res.json({'Message': "Filme não encontrado!"})
+            return res.status(404).json({'Message': "Filme não encontrado!"})
 
-        return res.json(filmes[id])
+        return res.status(200).json({id:id, filme: filmes[id]})
     }
 
     create = (req, res) => {
         const { filme } = req.body
+        const buffer = load()
         
-        filmes.push(filme)
+        buffer.filmes.push(filme)
         
-        return res.json(filmes)
+        save(buffer)
+        return res.status(201).json({filmes: buffer.filmes})
     }
 
     update = (req, res) => {
         const { id } = req.params
+        const buffer = load()
 
-        if(filmes[id] === undefined)
-            return res.json({'Message': "Filme não encontrado!"})
+        if(buffer.filmes[id] === undefined)
+            return res.status(404).json({'Message': "Filme não encontrado!"})
 
         const { filme } = req.body
-        filmes[id] = filme
-        res.json({"message": "Filme alterado com sucesso",  ...filmes })
+        buffer.filmes[id] = filme
+
+        save(buffer)
+
+        return res.status(202).json({"message": "Filme alterado com sucesso",  filmes: buffer.filmes })
     }
 
     delete = (req, res) => {
         const { id } = req.params
+        const buffer = load()
 
-        if(filmes[id] === undefined)
+        if(buffer.filmes[id] === undefined)
             return res.json({'Message': "Filme não encontrado!"})
 
-        delete filmes[id]   
+        buffer.filmes.splice(id, 1)
+
+        save(buffer)
         
-        return res.json("Filme deletado")
+        return res.status(202).json({message: "Filme deletado!", filmes: buffer.filmes})
     }
+
 }
+
 
 module.exports = new FilmeController()
