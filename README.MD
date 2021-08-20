@@ -30,7 +30,9 @@ yarn dev
 #### Testes
 Para testar a aplicação use uma ferramente como Postman ou Insomnia.
 ##### Filmes
-Teste as requisição da rota filmes em localhost:3000/filmes, onde ja vai ser listado todos os Filmes até então cadastrados no arquivo, ou passando ainda o /id para busca um item especifico com os métodos [GET, POST, PUT, DELETE]
+Teste as requisição da rota filmes em localhost:3000/filmes, onde ja vai ser listado todos os Filmes até então cadastrados no arquivo, ou passando ainda o /id para busca um item especifico com os métodos [GET, POST, PUT, DELETE].
+
+A rota filmes ainda conta com a rota extra localhost:3000/filmes/dodia que retorna um título aleatória da lista ja cadastrada.
 
 ##### Games
-Teste as requisição da rota games em localhost:3000/games, onde ja vai ser listado todos os games até então cadastrados no arquivo, ou passando ainda o /id para busca um item especifico com os métodos [GET, POST, PUT, DELETE]
+Teste as requisição da rota games em localhost:3000/games, onde ja vai ser listado todos os games até então cadastrados no arquivo, ou passando ainda o /id para busca um item especifico com os métodos [GET, POST, PUT, DELETE].
